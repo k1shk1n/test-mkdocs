@@ -9,6 +9,9 @@ jobs:
   publish:
     runs-on: ubuntu-22.04
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - runs: echo "fake publish python package"
 
   deploy-docs:
