@@ -17,6 +17,8 @@ jobs:
   deploy-docs:
     runs-on: ubuntu-22.04
     needs: publish
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
