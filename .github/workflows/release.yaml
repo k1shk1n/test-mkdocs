@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - runs: echo "fake publish python package"
+      - run: echo "fake publish python package"
 
   deploy-docs:
     runs-on: ubuntu-22.04
