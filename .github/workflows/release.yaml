@@ -47,7 +47,7 @@ jobs:
       - name: Deploy versioned docs
         run: |
           source .venv/bin/activate
-          VERSION=${GITHUB_REF#refs/tags/v}
+          VERSION=${GITHUB_REF#refs/tags/}
           # mike deploy "$VERSION" --update-aliases latest stable
           mike deploy --push --update-aliases "$VERSION" latest
           mike set-default "$VERSION"
