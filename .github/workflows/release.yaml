@@ -107,10 +107,12 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install mkdocs-material
-          pip install pillow cairosvg mike
+          pip install mike
       - name: Setup Docs Deploy
         run: |
           git config --global user.name "Docs Deploy"
           git config --global user.email "docs.deploy@example.co.uk"
       - name: Build Docs Website
-        run: mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest
+        run: |
+          mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest
+          mike set-default --push latest
