@@ -41,7 +41,8 @@ jobs:
         run: |
           source .venv/bin/activate
           VERSION=${GITHUB_REF#refs/tags/v}
-          mike deploy "$VERSION" --update-aliases latest stable
+          # mike deploy "$VERSION" --update-aliases latest stable
+          mike deploy --push --update-aliases "$VERSION" latest
           mike set-default "$VERSION"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
