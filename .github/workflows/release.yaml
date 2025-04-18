@@ -34,7 +34,10 @@ jobs:
       - name: Install dependencies
         # run: uv pip install --system mkdocs-material==9.6.11 mike==2.1.3
         # run: uv pip install mkdocs-material==9.6.11 mike==2.1.3
-        run: uv sync
+        run: |
+          uv venv .venv
+          source .venv/bin/activate
+          mkdocs-material==9.6.11 mike==2.1.3
 
       - name: Configure Git
         run: |
@@ -43,6 +46,7 @@ jobs:
 
       - name: Deploy versioned docs
         run: |
+          source .venv/bin/activate
           VERSION=${GITHUB_REF#refs/tags/v}
           # mike deploy "$VERSION" --update-aliases latest stable
           mike deploy --push --update-aliases "$VERSION" latest
